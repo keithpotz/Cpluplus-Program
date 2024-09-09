@@ -24,7 +24,7 @@ public:
 	ItemTracker(const std::string& filename) : fileLoadedSuccessfully(false) {  // Iniitialize fileLoadedSuccessfully in the member initializer list
 		std::ifstream inputFile(filename);
 		if (!inputFile) {
-			std::cerr << "Unable to open file: " << filename << std::endl;
+			std::cerr << "Unable to open file: " << filename << "Please check file name and location and you have read permissions" << " std::endl;
 			return;
 		}
 		std::string item;
@@ -106,7 +106,7 @@ bool isValidItemName(const std::string& itemName) {
 
 	// check each character in the string
 	for (char ch : itemName) {
-		if (!isalpha(ch) && ch != ' ') {  // Allows only leters and spaces
+		if (!isalpha(ch) && ch != ' ' && ch != '-' && ch != '\'') {  // Allows only leters and spaces
 			return false;
 		}
 		
